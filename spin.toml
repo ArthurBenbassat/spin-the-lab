@@ -19,4 +19,3 @@ files = [{ source = "assets", destination = "/assets" }]
 command = "dotnet build -c Release"
 [component.trigger]
 route = "/..."
-executor = { type = "wagi" }
