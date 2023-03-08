@@ -1,0 +1,22 @@
+spin_version = "1"
+authors = ["Arthur Benbassat <arthur.benbassat@student.kdg.be>"]
+description = "Api project with wasm"
+name = "Backend RAM"
+version = "1.0.0"
+trigger = { type = "http", base = "/" }
+
+#[variables]
+#pg_conn_str = { required = true }
+
+[[component]]
+id = "Home"
+source = "bin/Release/net7.0/Home.wasm"
+allowed_http_hosts = ["https://graph.microsoft.com"]
+#[component.config]
+#pg_conn_str = "{{ pg_conn_str }}"
+files = [{ source = "assets", destination = "/assets" }]
+[component.build]
+command = "dotnet build -c Release"
+[component.trigger]
+route = "/..."
+executor = { type = "wagi" }
